@@ -1,0 +1,329 @@
+* {
+	color: white;
+	box-sizing: border-box;
+}
+
+html {
+	width: 100vw;
+	height: 100vh;
+}
+
+.body-setores {
+	margin: 0;
+	background-color: #333;
+}
+
+.container-setores {
+	width: 90%;
+	margin: 1.2em auto;
+}
+
+.container-setores {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+
+.container-setores .title-planta {
+	margin: 0.3em auto;
+	text-align: center;
+}
+
+.container-setores #img-planta {
+	width: 100%;
+	border-radius: 1em;
+}
+
+.legenda {
+	margin: 0.6em auto;
+	text-align: center;
+}
+
+a {
+	color: transparent;
+}
+
+.btn-add-mapa,
+.btn-edit-mapa,
+.btn-add-pin,
+.btn-delete-pin {
+	margin: 0.6em auto;
+	padding: 0.6em 1.8em;
+	background-color: #2d2d2d;
+	border-color: #2c2c2c;
+	border-radius: 0.6em;
+	color: white;
+}
+
+/* =========================== NAV ============================= */
+
+/*
+ Regras duplicadas
+ */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	margin: 0;
+	/* Usar 100vw causa o apareceimento da barra de rolagem horizontal */
+	max-width: 100%;
+	font-size: 100%;
+}
+
+.container {
+	width: 90vw;
+}
+
+nav {
+	right: 0;
+	left: 0;
+	margin: 15em auto;
+	padding: 1em 2em;
+	width: 25em;
+	background-color: #1d1d1d;
+	border-radius: 1.2em;
+	position: fixed;
+	box-shadow: 6px 8px 10px black;
+}
+
+
+a {
+	text-decoration: none;
+}
+
+nav ul {
+	display: inline-flex;
+	padding: auto;
+	width: 100%;
+}
+
+nav ul li {
+	margin: auto;
+	list-style: none;
+	width: 3.5em;
+}
+
+nav ul li a {
+	width: 7.4em;
+	height: 7.em
+}
+
+.nav-btn {
+	width: 3em;
+	height: 3em;
+	border-radius: 100%;
+	border: none;
+	background-color: white;
+	cursor: pointer;
+}
+
+#nav-btn-3 {
+	background-color: #ff2d09;
+}
+
+.nav-btn img {
+	padding: 0.5em;
+	width: 3em;
+}
+
+nav ul li div:hover {
+	background-color: orange;
+}
+
+
+nav ul li div:Active {
+	background-color: red;
+
+}
+
+.bar {
+	width: 100%;
+	display: inline-flex;
+	background-color: transparent;
+	color: white;
+	margin-bottom: 2em;
+	border-color: transparent;
+	border-width: 3px;
+	border-bottom-style: solid;
+}
+
+.bar h1 {
+	margin: auto;
+	margin-left: 1em;
+}
+
+
+select {
+	margin: auto;
+	margin-left: 1em;
+	background-color: transparent;
+	color: white;
+	border-color: green;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom-width: medium;
+}
+
+select option {
+	color: #000
+}
+
+.bar-hour-date {
+	margin: auto;
+	margin-left: 1em;
+	text-align: right;
+}
+
+
+.toggle-switch {
+	margin: 1em;
+	width: 7em;
+	height: 2.7em;
+	padding: 0.6em;
+	background-color: #444;
+	opacity: 0.8;
+	display: inline-flex;
+	border-radius: 3em;
+}
+
+
+.toggle-switch div {
+	width: 1.5em;
+	height: 1.5em;
+	margin-left: 1em;
+	margin-right: auto;
+	border-radius: 100%;
+	border: none;
+	cursor: pointer;
+}
+
+/* Utilize classes combinadas para ter apens um CSS */
+.btn-aluno,
+.btn-admin {
+	background-color: gray;
+}
+
+.btn-aluno.active {
+	background-color: limegreen;
+}
+
+.btn-admin.active {
+	background-color: red;
+}
+
+.pinos {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	position: relative;
+	display: inline-block;
+}
+
+.pinos img {
+	max-width: 100%;
+	display: block;
+}
+
+.item {
+	position: absolute;
+	width: 3em;
+	height: 3em;
+	z-index: 1;
+	background-image: url('/static/imagens/map-pin-red.svg');
+	background-position: top center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	transform: translate(-50%, -50%);
+}
+
+.item>a {
+	display: none;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-60%);
+	left: 75%;
+	white-space: nowrap;
+	display: none;
+	color: white;
+	background-color: #222222f0;
+	border-radius: 0.4em;
+	box-shadow: 2px 2px 2px #000000f0;
+	padding: 0.4em;
+}
+
+.item:hover>a {
+	display: block;
+}
+
+
+@media (max-width: 1280px) {
+
+	html {
+		font-size: 90%;
+	}
+
+}
+
+
+@media (max-width: 1024px) {
+
+	html {
+		font-size: 80%;
+	}
+
+}
+
+@media (max-width: 767px) {
+
+	html {
+		font-size: 70%;
+	}
+
+
+}
+
+
+@media (max-width: 600px) {}
+
+
+@media (max-width: 480px) {}
+
+
+
+@media (max-width: 300px) {
+
+	.bar h1,
+	select {
+		display: inline-block;
+	}
+
+	.bar-hour-date {
+		display: inline-block;
+	}
+
+	.toggle-switch {
+		display: inline-flex;
+	}
+
+	.bar-hour-date {
+		text-align: left;
+	}
+
+	.bar {
+		display: inline-block;
+		text-align: center;
+	}
+
+	nav {
+		width: auto;
+	}
+
+}

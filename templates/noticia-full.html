@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{noticia['title']}} {% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/noticia-full.css')}}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="editar">
+            <a href="{{url_for('index_noticias')}}">
+                <img class="img-fechar" src="{{url_for('static', filename='imagens/icone-totem-fechar-v2.png')}}">
+            </a>
+        </div>
+
+        {% if noticia['url'] == "" %}
+
+        <div class="posts-preview">
+            <h2 alt="Titulo">{{ noticia['title'] }}</h2>
+            <p id="data" alt="Data">{{ noticia['created'] }}</p>
+            <p id="texto" class="text" alt="Descrição">
+                {{ noticia['content'] }}
+                <a>
+                    <span class="autor" alt="Autor">Publicado por: {{ noticia['autor'] }}</span>
+                </a>
+                <a href="{{ noticia['fonte'] }}">
+                    <span class="fonte" alt="Fonte">clique aqui</span>
+                </a>
+            </p>
+        </div>
+
+        {% else %}
+
+        {% if noticia['url'].find('http') != -1 %}
+        <div class="posts-preview">
+            <h2 alt="Titulo">{{ noticia['title'] }}</h2>
+            <p id="data" alt="Data">{{ noticia['created'] }}</p>
+            <p id="texto" class="text" alt="Descrição">
+                <img class="img" alt="Imagem" src="{{ noticia['url'] }}">
+                {{ noticia['content'] }}
+                <a>
+                    <span class="autor" alt="Autor">Publicado por: {{ noticia['autor'] }}</span>
+                </a>
+                <a href="{{ noticia['fonte'] }}">
+                    <span class="fonte" alt="Fonte">clique aqui</span>
+                </a>
+            </p>
+        </div>
+
+        {% else %}
+        <div class="posts-preview">
+            <h2 alt="Titulo">{{ noticia['title'] }}</h2>
+            <p id="data" alt="Data">{{ noticia['created'] }}</p>
+            <p id="texto" class="text" alt="Descrição">
+                <img class="img" alt="Imagem" src="{{url_for('static', filename='imagens/'+noticia['url'])}}">
+                {{ noticia['content'] }}
+                <a>
+                    <span class="autor" alt="Autor">Publicado por: {{ noticia['autor'] }}</span>
+                </a>
+                <a href="{{ noticia['fonte'] }}">
+                    <span class="fonte" alt="Fonte">clique aqui</span>
+                </a>
+            </p>
+        </div>
+        {% endif %}
+        {% endif %}
+
+        <script src="{{url_for('static', filename='js/noticia-full.js')}}"></script>
+
+</body>
+
+</html>

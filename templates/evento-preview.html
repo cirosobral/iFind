@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>Eventos Preview</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/evento-preview.css')}}">
+</head>
+
+<body class="body-eventos">
+
+    <div class="bar">
+        <h1>{% block title %} Eventos {% endblock %}</h1>
+        <div class="bar-hour-date">
+            <h3 id="bar-hour"></h3>
+            <h3 id="bar-date"></h3>
+        </div>
+        <div class="toggle-switch">
+            <a href="{{url_for('index_noticias')}}">
+                <div class="btn-aluno"></div>
+            </a>
+            <a href="{{url_for('login')}}">
+                <div class="btn-admin"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav>
+            <ul class="nav-ul">
+                <li class="nav-li"><a href="{{url_for('index_noticias')}}" alt="Noticias">
+                        <div id="nav-btn-1" class="nav-btn"><img
+                                src="{{url_for('static', filename='imagens/noticias-icon-128x128-transparent.png')}}">
+                        </div>
+                    </a></li>
+                <li class="nav-li"><a href="{{url_for('index_cronogramas')}}" alt="Cronogramas">
+                        <div id="nav-btn-2" class="nav-btn"><img
+                                src="{{url_for('static', filename='imagens/cronograma-icon-128x128-transparent.png')}}">
+                        </div>
+                    </a></li>
+                <li class="nav-li"><a href="{{url_for('index_mapas')}}" alt="Mapas">
+                        <div id="nav-btn-3" class="nav-btn"><img
+                                src="{{url_for('static', filename='imagens/mapa-icon-128x128-transparent.png')}}"></div>
+                    </a></li>
+                <li class=" nav-li"><a href="{{url_for('index_eventos')}}" alt="Eventos">
+                        <div id="nav-btn-4" class="nav-btn"><img
+                                src="{{url_for('static', filename='imagens/evento-icon-128x128-transparent.png')}}">
+                        </div>
+                    </a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container-evento">
+
+        {% for evento in eventos %}
+        <div class="eventos-preview">
+            <h2>{{ evento['title']}}</h2>
+            <p id="data">{{ evento['data']}}</p>
+            <h3>{{ evento['autor']}}</h3>
+            <p>
+                {{ evento['descricao']}}
+            </p>
+            <h3>Local</h3>
+            <p>{{ evento['local']}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="{{url_for('static', filename='js/hour-date.js')}}"></script>
+
+</body>
+
+</html>

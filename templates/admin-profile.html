@@ -1,0 +1,28 @@
+</html>
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Preview</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/post_full_style.css')}}">
+</head>
+
+<body>
+
+    {% for user in users %}
+    <div class="posts-preview">
+        <h2>{{ user['email'] }}</h2>
+        <p id="data">{{ user['id'] }}</p>
+        <p id="data">{{ user['nome'] }}</p>
+        <p class="text1">{{ user['senha'] }}</p>
+        <p class="text1">{{ user['authenticated'] }}</p>
+    </div>
+    {% endfor %}
+
+</body>
+
+</html>

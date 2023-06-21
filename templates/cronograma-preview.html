@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronogramas resumidos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cronograma-preview.css') }}">
+</head>
+
+<body class="body-cronogramas">
+
+    <div class="bar">
+        <h1>{% block title %} Cronograma {% endblock %}</h1>
+
+        <div class="bar-hour-date">
+            <h3 id="bar-hour"></h3>
+            <h3 id="bar-date"></h3>
+        </div>
+        <div class="toggle-switch">
+            <a href="{{ url_for('index_noticias') }}">
+                <div class="btn-aluno"></div>
+            </a>
+            <a href="{{ url_for('login') }}">
+                <div class="btn-admin"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav>
+            <ul class="nav-ul">
+                <li class="nav-li"><a href="{{ url_for('index_noticias') }}" alt="Noticias">
+                        <div id="nav-btn-1" class="nav-btn"><img
+                                src="{{ url_for('static', filename='imagens/noticias-icon-128x128-transparent.png') }}">
+                        </div>
+                    </a></li>
+                <li class="nav-li"><a href="{{ url_for('index_cronogramas') }}" alt="Cronogramas">
+                        <div id="nav-btn-2" class="nav-btn"><img
+                                src="{{ url_for('static', filename='imagens/cronograma-icon-128x128-transparent.png') }}">
+                        </div>
+                    </a></li>
+                <li class="nav-li"><a href="{{ url_for('index_mapas') }}" alt="Mapas">
+                        <div id="nav-btn-3" class="nav-btn"><img
+                                src="{{ url_for('static', filename='imagens/mapa-icon-128x128-transparent.png') }}">
+                        </div>
+                    </a></li>
+                <li class=" nav-li"><a href="{{ url_for('index_eventos') }}" alt="Eventos">
+                        <div id="nav-btn-4" class="nav-btn"><img
+                                src="{{ url_for('static', filename='imagens/evento-icon-128x128-transparent.png') }}">
+                        </div>
+                    </a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container-cronogramas">
+        {% set cursos = ["Informática", "Mineração", "Eletromecânica"] %}
+        {% for curso in cursos %}
+        <h1 class="cronograma-title">{{ curso }}</h1>
+        <div class="cronogramas">
+            {% for cronograma in cronogramas %}
+            {% if cronograma['section'] == curso %}
+            <a href="{{  url_for('cronograma', cronograma_id=cronograma['id'])  }}">
+                <div class="cronograma">
+                    <!--<a href="{{  url_for('cronograma', cronograma_id=cronograma['id'])  }}">-->
+                    <h4 class="title">{{ cronograma['turma'] }}</h4>
+                    <div class="info">
+                        <p class="horario">{{ horarios[cronograma['id']][dia + '_professor_1'] }}</p>
+                        <p class="materia">{{ horarios[cronograma['id']][dia + '_disciplina_1'] }}</p>
+                    </div>
+                    <div class="info">
+                        <p class="horario">{{ horarios[cronograma['id']][dia + '_professor_2'] }}</p>
+                        <p class="materia">{{ horarios[cronograma['id']][dia + '_disciplina_2'] }}</p>
+                    </div>
+                    <div class="info">
+                        <p class="horario">{{ horarios[cronograma['id']][dia + '_professor_3'] }}</p>
+                        <p class="materia">{{ horarios[cronograma['id']][dia + '_disciplina_3'] }}</p>
+                    </div>
+                    <div class="info">
+                        <p class="horario">{{ horarios[cronograma['id']][dia + '_professor_4'] }}</p>
+                        <p class="materia">{{ horarios[cronograma['id']][dia + '_disciplina_4'] }}</p>
+                    </div>
+                    <div class="info">
+                        <p class="horario">{{ horarios[cronograma['id']][dia + '_professor_5'] }}</p>
+                        <p class="materia">{{ horarios[cronograma['id']][dia + '_disciplina_5'] }}</p>
+                    </div>
+                    <div class="info">
+                        <p class="horario">{{ horarios[cronograma['id']][dia + '_professor_6'] }}</p>
+                        <p class="materia">{{ horarios[cronograma['id']][dia + '_disciplina_6'] }}</p>
+                    </div>
+                </div>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/hour-date.js') }}"></script>
+
+</body>
+
+</html>

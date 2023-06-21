@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Importações</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/uploaded-files.css') }}">
+</head>
+
+<body>
+
+    <div class="bar">
+        <h1>Importações</h1>
+        <select onchange="location.href=this.value">
+            <option value="#">Selecione:</a></option>
+            <option value="{{url_for('create_noticia')}}">Criar Noticia</a></option>
+            <option value="{{url_for('create_evento')}}">Criar Evento</option>
+            <option value="{{url_for('create_mapa')}}">Criar Mapa</option>
+            <option value="{{url_for('create_cronograma')}}">Criar Cronograma</option>
+            <option value="{{url_for('register')}}">Criar administrador</option>
+            <option value="{{url_for('upload_file')}}">Importar Imagem</option>
+            <option value="{{url_for('index_arquivos')}}">Ver Importações</option>
+        </select>
+
+        <div class="bar-hour-date">
+            <h3 id="bar-hour"></h3>
+            <h3 id="bar-date"></h3>
+        </div>
+        <div class="toggle-switch">
+            <a href="{{url_for('logout')}}">
+                <div class="btn-aluno"></div>
+            </a>
+            <a href="{{url_for('login')}}">
+                <div class="btn-admin"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav>
+            <ul class="nav-ul">
+                <li class="nav-li"><a href="{{url_for('index_noticias_admin')}}" alt="Noticias">
+                        <div id="nav-btn-1" class="nav-btn"><img
+                                src="{{url_for('static', filename='imagens/noticias-icon-128x128-transparent.png')}}">
+                        </div>
+                    </a></li>
+                <li class="nav-li"><a href="{{url_for('index_cronogramas_admin')}}" alt="Cronogramas">
+                        <div id="nav-btn-2" class="nav-btn"><img
+                                src="{{url_for('static', filename='imagens/cronograma-icon-128x128-transparent.png')}}">
+                        </div>
+                    </a></li>
+                <li class="nav-li"><a href="{{url_for('index_mapas_admin')}}" alt="Mapas">
+                        <div id="nav-btn-3" class="nav-btn"><img
+                                src="{{url_for('static', filename='imagens/mapa-icon-128x128-transparent.png')}}"></div>
+                    </a></li>
+                <li class=" nav-li"><a href="{{url_for('index_eventos_admin')}}" alt="Eventos">
+                        <div id="nav-btn-4" class="nav-btn"><img
+                                src="{{url_for('static', filename='imagens/evento-icon-128x128-transparent.png')}}">
+                        </div>
+                    </a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container-arquivos">
+
+        <h1 class='title'>Arquivos Importados</h1>
+        <div class="container">
+            <h4 class="extension-arquivo">TXT</h4>
+            {% for arquivo in arquivos %}
+            {% if arquivo.find(".txt") != -1 %}
+            <div class="container-arquivo">
+                <a class="delete-arquivo" href="{{ url_for('delete_arquivo', name=arquivo ) }}">
+                    <img class="img" src="{{ url_for('static', filename='imagens/icone-totem-delete.png') }}">
+                </a>
+                <p class="nome-arquivo" onclick="location.href=this.innerHTML">{{ arquivo }}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="container">
+            <h4 class="extension-arquivo">PNG</h4>
+            {% for arquivo in arquivos %}
+            {% if arquivo.find(".png") != -1 %}
+            <div class="container-arquivo">
+                <a class="delete-arquivo" href="{{ url_for('delete_arquivo', name=arquivo ) }}">
+                    <img class="img" src="{{ url_for('static', filename='imagens/icone-totem-delete.png') }}">
+                </a>
+                <p class="nome-arquivo" onclick="location.href=this.innerHTML">{{ arquivo }}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="container">
+            <h4 class="extension-arquivo">JPEG</h4>
+            {% for arquivo in arquivos %}
+            {% if arquivo.find(".jpeg") != -1 %}
+            <div class="container-arquivo">
+                <a class="delete-arquivo" href="{{ url_for('delete_arquivo', name=arquivo ) }}">
+                    <img class="img" src="{{ url_for('static', filename='imagens/icone-totem-delete.png') }}">
+                </a>
+                <p class="nome-arquivo" onclick="location.href=this.innerHTML">{{ arquivo }}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="container">
+            <h4 class="extension-arquivo">JPG</h4>
+            {% for arquivo in arquivos %}
+            {% if arquivo.find(".jpg") != -1 %}
+            <div class="container-arquivo">
+                <a class="delete-arquivo" href="{{ url_for('delete_arquivo', name=arquivo ) }}">
+                    <img class="img" src="{{ url_for('static', filename='imagens/icone-totem-delete.png') }}">
+                </a>
+                <p class="nome-arquivo" onclick="location.href=this.innerHTML">{{ arquivo }}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="container">
+            <h4 class="extension-arquivo">GIF</h4>
+            {% for arquivo in arquivos %}
+            {% if arquivo.find(".gif") != -1 %}
+            <div class="container-arquivo">
+                <a class="delete-arquivo" href="{{ url_for('delete_arquivo', name=arquivo ) }}">
+                    <img class="img" src="{{ url_for('static', filename='imagens/icone-totem-delete.png') }}">
+                </a>
+                <p class="nome-arquivo" onclick="location.href=this.innerHTML">{{ arquivo }}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="container">
+            <h4 class="extension-arquivo">PDF</h4>
+            {% for arquivo in arquivos %}
+            {% if arquivo.find(".pdf") != -1 %}
+            <div class="container-arquivo">
+                <a class="delete-arquivo" href="{{ url_for('delete_arquivo', name=arquivo ) }}">
+                    <img class="img" src="{{ url_for('static', filename='imagens/icone-totem-delete.png') }}">
+                </a>
+                <p class="nome-arquivo" onclick="location.href=this.innerHTML">{{ arquivo }}</p>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+
+</body>
+
+</html>

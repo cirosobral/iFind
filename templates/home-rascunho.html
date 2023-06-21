@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Inicio</title>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+</head>
+
+<body class="body-home">
+
+	<main class="container-home-column">
+		<div class="container-home-row">
+			<a href="#" onclick="changeConteudo('projeto')"><button id="btn-projeto"
+					class="btn-row">Projeto</button></a>
+			<a href="#" onclick="changeConteudo('about')"><button id="btn-about"
+					class="btn-row">Desenvolvedores</button></a>
+			<a href="#" onclick="changeConteudo('institute')"><button id="btn-institute"
+					class="btn-row">Instituição</button></a>
+		</div>
+		<h1 id="title" class="title">IFIND</h1>
+		<div class="container-home-row">
+			<p id="description" class="description"></p>
+			<img id="imagem" class="img" src="">
+		</div>
+		<h4 class="auth">Desenvolvido por:<a href="https://www.instagram.com/mendes.editor/"><span> Idelson
+					Mendes</span></a> e <a href=""><span>Gabriel Levi</span></a></h4>
+		<a href="{{url_for('index_noticias')}}"><button class="btn-start">Start</button></a>
+
+		<div class="social-media">
+			<ul class="social-media-ul"></ul>
+		</div>
+
+	</main>
+
+	<script>
+
+		var titles = {
+			"projeto": "IFind",
+			"about": "Desenvolvedores",
+			"institute": "Instituto"
+		};
+
+		var conteudos = {
+			"projeto": "O Ifind é uma ferramenta de informação acadêmica pertencente ao campus Jacobina. <br><br> O objetivo é oferecer uma experiência agradável e simples para todos interessados em se informar sobre a comunidade acadêmica de jacobina. Explore as principais notícias, cronogramas de aula, eventos e oficinas, mapas interativos e muito mais com simples gestos de toque",
+			"about": "Idelson Mendes é formado em técnico em informática pelo IFBA Jacobina, ingressando em 2018 e concluinte em 2022. <br><br>",
+			"institute": "O Instituto Federal de Ciência e Tecnologia da Bahia (IFBA), Campus Jacobina.<br><br> Representando uma instituição de renome reconhecida por toda a região de Jacobina, contribuindo para a educação, voltado a pesquisa e projetos de extensão, conseguiu adquirir muitos prêmios através dos alunos que se matricularam ao longo dos anos."
+		};
+
+		var imagens = {
+			"projeto": "/static/imagens/icone-totem-40%ifind-v2.png",
+			"about": "/static/imagens/mendes.jpg",
+			"institute": "/static/imagens/ifba jacobina.jpeg"
+		};
+
+
+		var AllsocialMedias = {
+			"projetos":
+				[
+					"",
+					"",
+					""
+				],
+			"about":
+				[
+					[
+						"https://www.instagram.com/mendes.editor/",
+						"#"
+					],
+					[
+						"https://www.instagram.com/llevi/",
+						"#"
+					]
+				],
+			"institute":
+				[
+					"https://www.instagram.com/ifba.jacobina/",
+					"https://www.facebook.com/InstitutoFederaldaBahia/",
+					"https://twitter.com/ifbaoficial",
+					"#",
+					"https://ava.ifba.edu.br/login/index.php",
+					"https://suap.ifba.edu.br/accounts/login/?next=/",
+					"https://portal.ifba.edu.br/jacobina"
+				]
+		};
+
+
+		var icons = {
+
+			"projeto":
+				[
+
+				],
+			"about":
+				[
+
+					"/static/imagens/icons8-instagram-50.png",
+					"/static/imagens/icons8-whatsapp-50.png"
+
+				],
+			"institute":
+				[
+					"/static/imagens/icons8-instagram-50.png",
+					"/static/imagens/icons8-facebook-50.png",
+					"/static/imagens/icons8-twitter-quadrado-50.png",
+					"/static/imagens/icons8-whatsapp-50.png",
+					"/static/imagens/icons8-moodle-50.png",
+					"/static/imagens/suap-icon-white-50x50.png",
+					"/static/imagens/icons8-universidade-50.png"
+
+				]
+		};
+
+		let title = document.getElementById('title');
+		let imagem = document.getElementById('imagem');
+		let description = document.getElementById('description');
+
+		let socialMediasUL = document.querySelectorAll('.social-media-ul');
+		let socialMediasIcon = document.querySelectorAll('.social-media-ul a li img');
+
+		var elementLink = [];
+		var elementImg = [];
+
+		title.innerHTML = titles['projeto'];
+		description.innerHTML = conteudos['projeto'];
+		imagem.src = imagens['projeto'];
+
+		function changeConteudo(pageID) {
+
+			title.innerHTML = titles[pageID];
+			description.innerHTML = conteudos[pageID];
+			imagem.src = imagens[pageID];
+
+			let activeProjeto = document.querySelector('.container-home-row a:nth-child(1)');
+			let activeAbout = document.querySelector('.container-home-row a:nth-child(2)');
+			let activeInstitute = document.querySelector('.container-home-row a:nth-child(3)');
+
+			if (pageID == "projeto") {
+				document.getElementById('btn-projeto').style.color = 'limegreen';
+				document.getElementById('btn-about').style.color = 'white';
+				document.getElementById('btn-institute').style.color = 'white';
+				activeProjeto.style = 'border-bottom: 2px limegreen solid';
+				activeAbout.style = 'border-bottom: 2px gray solid';
+				activeInstitute.style = 'border-bottom: 2px gray solid';
+			} else if (pageID == "about") {
+				document.getElementById('btn-projeto').style.color = 'white';
+				document.getElementById('btn-about').style.color = 'limegreen';
+				document.getElementById('btn-institute').style.color = 'white';
+				activeProjeto.style = 'border-bottom: 2px gray solid';
+				activeAbout.style = 'border-bottom: 2px limegreen solid';
+				activeInstitute.style = 'border-bottom: 2px gray solid';
+			} else {
+				document.getElementById('btn-projeto').style.color = 'white';
+				document.getElementById('btn-about').style.color = 'white';
+				document.getElementById('btn-institute').style.color = 'limegreen';
+				activeProjeto.style = 'border-bottom: 2px gray solid';
+				activeAbout.style = 'border-bottom: 2px gray solid';
+				activeInstitute.style = 'border-bottom: 2px limegreen solid';
+			}
+
+			let socialMediasLink = document.querySelectorAll('.social-media-ul a');
+
+			for (var i = 0; i < socialMediasLink.length; i++) {
+				socialMediasLink[i].remove();
+			}
+
+			for (var i = 0; i < AllsocialMedias[pageID].length; i++) {
+				elementLink[i] = document.createElement('a');
+				elementLink[i].setAttribute('href', `${AllsocialMedias[pageID][i]}`);
+				document.querySelector('.social-media-ul').appendChild(elementLink[i]);
+
+				elementImg[i] = document.createElement('img');
+				elementImg[i].setAttribute('src', `${icons[pageID][i]}`);
+				let socialMediasLink = document.querySelectorAll('.social-media-ul a');
+				socialMediasLink[i].appendChild(elementImg[i]);
+
+				if (pageID == "about") {
+
+					let elementDiv = document.createElement('div');
+					elementDiv.setAttribute('class', 'container-home-row-about')
+					let containerHomeRow = document.querySelector('.container-home-row');
+					containerHomeRow.appendChild(elementDiv)
+
+					let elementAboutLink = [];
+					let elementAboutButton = [];
+
+					for (var i = 0; i < AllsocialMedias['about'].length; i++) {
+						elementAboutLink[i] = document.createElement('a');
+						elementAboutLink[i].setAttribute('href', `${AllsocialMedias[pageID][i]}`);
+						elementDiv.appendChild(elementAboutLink[i])
+
+						elementAboutButton[i] = document.createElement('button')
+						elementAboutButton[i].setAttribute('class', 'btn-row');
+						elementAboutButton[i].setAttribute('value', `Desenvolvedor ${i}`);
+						elementAboutButton[i].setAttribute('onchange', `${i}`);
+						elementAboutButton[i].innerHTML = elementAboutButton[i].value;
+						elementAboutLink[i].appendChild(elementAboutButton[i])
+
+						
+
+						/*
+						for (var i = 0; i < AllsocialMedias['about'][i].length; i++) {
+							elementLink[i] = document.createElement('a');
+							elementLink[i].setAttribute('href', `${AllsocialMedias[pageID][i]}`);
+							document.querySelector('.social-media-ul').appendChild(elementLink[i]);
+
+							elementImg[i] = document.createElement('img');
+							elementImg[i].setAttribute('src', `${icons[pageID][i]}`);
+							let socialMediasLink = document.querySelectorAll('.social-media-ul a');
+							socialMediasLink[i].appendChild(elementImg[i]);
+						}
+						*/
+					}
+
+				}
+			}
+		}
+
+	</script>
+
+</body>
+
+</html>

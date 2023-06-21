@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Crie um novo Cronograma {% endblock %}</h1>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="section">Section</label>
+        <select name="section" placeholder="Section" class="form-control" value="{{ request.form['section'] }}">
+            <option value="Informática">Informática</option>
+            <option value="Mineração">Mineração</option>
+            <option value="Eletromecanica">Eletromecanica</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="turma">Turma</label>
+        <input type="text" name="turma" placeholder="Turma" class="form-control" value="{{ request.form['turma'] }}">
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <tr>
+                <td>Horário</td>
+                {% for dia in dias.values() %}
+                <td>{{ dia }}</td>
+                {% endfor %}
+            </tr>
+            {% for horario in horarios %}
+            <tr>
+                <td>{{ horario }}º Horário</td>
+                {% for dia in dias.keys() %}
+                <td>
+                    <div class="form-group">
+                        <input type="text" name="{{ dia }}_professor_{{ horario }}"
+                            placeholder="Professor {{ horario }}" class="form-control">
+                        <input type="text" name="{{ dia }}_disciplina_{{ horario }}"
+                            placeholder="Disciplina {{ horario }}" class="form-control">
+                    </div>
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+</form>
+
+<script>
+    document.querySelector('form').addEventListener('submit', (evt) => {
+        evt.preventDefault();
+
+        const data = new FormData(evt.target);
+
+        fetch(evt.target.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.fromEntries([...data].filter(el => el[1] != "")))
+        }).then(response => {
+            if (response.ok) {
+                console.log('Dados enviados com sucesso')
+                return response.url;
+            }
+            throw new Error('Erro ao enviar dados')
+        }).then(data => {
+            window.location.assign(data)
+        })
+    })
+</script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Editar evento "{{ evento['title'] }}" {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">Titulo</label>
+        <input type="text" name="title" placeholder="Titulo" class="form-control"
+            value="{{ request.form['title'] or evento['title'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="autor">Autor</label>
+        <input type="text" name="autor" placeholder="Autor" class="form-control"
+            value="{{ request.form['autor'] or evento['autor'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="data">Data</label>
+        <input type="datetime" name="data" placeholder="Data do evento" class="form-control"
+            value="{{ request.form['data'] or evento['data'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <input type="text" name="descricao" placeholder="Descrição do evento" class="form-control"
+            value="{{ request.form['descricao'] or evento['descricao'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="local">Local</label>
+        <input type="text" name="local" placeholder="Local do evento" class="form-control"
+            value="{{ request.form['local'] or evento['local'] }}">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+</form>
+<hr>
+<form action="{{ url_for('delete_evento', id=evento['id']) }}" method="POST">
+    <input type="submit" value="Deletar evento" class="btn btn-danger btn-sm"
+        onclick="return confirm('Você quer mesmo deletar esse evento?')">
+</form>
+{% endblock %}

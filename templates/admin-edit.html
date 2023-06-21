@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Edit "{{ user['nome'] }}" {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" placeholder="Email" class="form-control"
+            value="{{ request.form['email'] or user['email'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" placeholder="Nome" class="form-control"
+            value="{{ request.form['nome'] or user['nome'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="text" name="senha" placeholder="Senha" class="form-control"
+            value="{{ request.form['password'] or user['senha'] }}">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+</form>
+<hr>
+<form action="{{ url_for('delete_user', id=user['id']) }}" method="POST">
+    <input type="submit" value="Deletar user" class="btn btn-danger btn-sm"
+        onclick="return confirm('Você quer mesmo deletar esse usuário?')">
+</form>
+{% endblock %}

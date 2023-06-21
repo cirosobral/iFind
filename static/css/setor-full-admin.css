@@ -1,0 +1,135 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+}
+
+body {
+	background-color: black;
+	width: 100%;
+}
+
+.container {
+	min-width: 100%;
+}
+
+.editar {
+	width: 90%;
+	margin: 1em auto;
+	text-align: right;
+}
+
+.img-editar, .img-fechar {
+	width: 2em;
+	margin-right: 3em;
+	border-radius: 100%;
+}
+
+.img-editar:hover, .img-fechar:hover {
+	width: 2.5em;
+	cursor: pointer;
+}
+
+.setor-preview {
+	margin: 1.2em auto;
+	padding: 1em;
+	width: 90%;
+	background-color: #333333;
+	color: white;
+	border-radius: 1em;
+	text-align: justify;
+}
+
+.setor-preview img {
+	margin: auto;
+	width: 100%;
+}
+
+.setor-preview h2 {  
+	margin: 0.5em auto;
+	padding: 0em;
+	width: 100%;
+	text-align: center;
+}
+
+.container #data {
+	margin: 0.5em auto;
+	padding: auto 1em;
+	width: 100%;
+	text-align: right;
+}
+
+.text {
+    font-size: 1em;
+	margin: auto;
+	width: 100%;
+	column-count: 2;
+}
+
+
+.autor, .fonte {
+	margin: 0.5em auto;
+	width: 100%;
+}
+
+.fonte a {
+	color: white;
+	text-decoration: none;
+}
+
+.fonte a:hover {
+	cursor: pointer;
+	color: royalblue;
+}
+
+
+@media (max-width: 1280px) {
+	
+	html {
+		font-size: 100%;
+	}
+
+}
+
+
+@media (max-width: 1024px) {
+	
+	html {
+		font-size: 100%;
+	}
+	
+}
+
+@media (max-width: 768px) {
+	
+	html {
+		font-size: 80%;
+	}
+	
+}
+
+@media (max-width: 600px) {
+	
+	html {
+		font-size: 100%;
+	}
+
+}
+
+
+@media (max-width: 500px) {
+	
+	html {
+		font-size: 100%;
+	}
+	
+	.text2 {
+		column-count: 1;
+	}
+
+}
+

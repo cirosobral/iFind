@@ -1,0 +1,135 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: white;
+}
+
+html {
+	font-size: 100%;
+	width: 100vw;
+	height: 130vh;
+}
+
+body {
+	background-color: black;
+	width: 100%;
+	height: 100%;
+}
+
+.container { 
+	margin: 1em auto;
+	width: 95%;
+	height: 100%;
+}
+
+.editar {
+	width: 80%;
+	margin: 1em auto;
+	text-align: right;
+}
+
+.editar a {
+	text-decoration: none;
+}
+
+.img-editar, .img-fechar {
+	width: 2em;
+	margin-right: 3em;
+	border-radius: 100%;
+}
+
+
+.img-editar:hover, .img-fechar:hover {
+	width: 2.5em;
+	cursor: pointer;
+}
+
+.cronograma-title {
+	width: auto;
+	text-align: center;
+}
+
+.cronogramas {
+	width: 100%;
+	height: auto;
+	margin-left: 1em;
+	border-radius: 0.6em;
+	display: flex;
+	flex-direction: row;
+}
+
+.cronograma-horario {
+	margin: 0.5em;
+	width: auto;
+	height: 50%;
+	margin-right: auto;
+	background-color: #2d2d2d;
+	border-radius: 0.6em;
+	/*float: left;*/
+}
+
+
+.cronograma {
+	margin: 0.5em;
+	width: auto;
+	height: auto;
+	margin-right: auto;
+	background-color: #2d2d2d;
+	border-radius: 0.6em;
+	/*float: left;*/
+}
+
+.title {
+	width: auto;
+	margin: 1em auto;
+	text-align: center;
+}
+
+.info {
+    margin: 0.3em 0.6em;
+	padding: 0.3em;
+	width: auto;
+	height: auto;
+	/*height: 8.5%;*/
+	background-color: #3d3d3d;
+	border-radius: 0.3em;
+}
+
+.materia, .professor, .horario {
+	margin: auto;
+	padding: 0.3em;
+	padding-right: auto;
+	width: 9em;
+	text-align: center;
+	color: #e7e7e7;
+}
+
+@media (max-width: 1280px) {
+	
+}
+
+@media (max-width: 1024px) {
+	
+		
+}
+
+
+@media (max-width: 768px) {
+	
+		html {
+			font-size: 70%;
+		}
+
+		/*
+		.cronogramas {
+			flex-wrap: wrap;
+		}
+		*/
+}
+
+
+@media (max-width: 480px) {
+	
+
+}

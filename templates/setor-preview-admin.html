@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %} {{ mapa['title']}} {% endblock %}</title>
+  <link rel="stylesheet" href="{{url_for('static', filename='css/setor-preview-admin.css')}}">
+
+  <style>
+    /* Gambi para aparecer a nav */
+    nav {
+      z-index: 2;
+    }
+
+    /* Fade-In Effect */
+    nav.visible {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.5s linear;
+    }
+
+    /* Fade-Out Effect */
+    nav.hidden {
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0s 2s, opacity 1s linear 1s;
+    }
+  </style>
+  {% if current_user.is_authenticated %}
+
+  <style>
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+      background-color: #222;
+      margin: 5% auto;
+      border-radius: 2em;
+      /* 15% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      box-shadow: 0 0 2em 0.5em #000000f0;
+      width: 80%;
+      /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+      color: #888;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+  {% endif %}
+</head>
+
+<body class="body-setores">
+
+  <div class="bar">
+    <h1>Setores</h1>
+
+    {% if current_user.is_authenticated %}
+    <select onchange="location.href=this.value">
+      <option value="#">Selecione:</a></option>
+      <option value="{{url_for('create_noticia')}}">Criar Noticia</a></option>
+      <option value="{{url_for('create_evento')}}">Criar Evento</option>
+      <option value="{{url_for('create_mapa')}}">Criar Mapa</option>
+      <option value="{{url_for('create_cronograma')}}">Criar Cronograma</option>
+      <option value="{{url_for('register')}}">Criar administrador</option>
+      <option value="{{url_for('upload_file')}}">Importar Imagem</option>
+      <option value="{{url_for('index_arquivos')}}">Ver Importações</option>
+    </select>
+
+    {% endif %}
+    <div class="bar-hour-date">
+      <h3 id="bar-hour"></h3>
+      <h3 id="bar-date"></h3>
+    </div>
+    <div class="toggle-switch">
+      {% set classAluno = "btn-aluno" if current_user.is_authenticated else "btn-aluno active" %}
+      {% set classAdmin = "btn-admin" if not current_user.is_authenticated else "btn-admin active" %}
+      <a href="{{url_for('logout')}}">
+        <div class="{{ classAluno }}"></div>
+      </a>
+      <a href="{{url_for('login')}}">
+        <div class="{{ classAdmin }}"></div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="container">
+    <nav class="hidden">
+      <ul class="nav-ul">
+        <li class="nav-li"><a href="{{url_for(links['noticias'])}}" alt="Noticias">
+            <div id="nav-btn-1" class="nav-btn"><img
+                src="{{url_for('static', filename='imagens/noticias-icon-128x128-transparent.png')}}">
+            </div>
+          </a></li>
+        <li class="nav-li"><a href="{{url_for(links['cronogramas'])}}" alt="Cronogramas">
+            <div id="nav-btn-2" class="nav-btn"><img
+                src="{{url_for('static', filename='imagens/cronograma-icon-128x128-transparent.png')}}">
+            </div>
+          </a></li>
+        <li class="nav-li"><a href="{{url_for(links['mapas'])}}" alt="Mapas">
+            <div id="nav-btn-3" class="nav-btn"><img
+                src="{{url_for('static', filename='imagens/mapa-icon-128x128-transparent.png')}}"></div>
+          </a></li>
+        <li class=" nav-li"><a href="{{url_for(links['eventos'])}}" alt="Eventos">
+            <div id="nav-btn-4" class="nav-btn"><img
+                src="{{url_for('static', filename='imagens/evento-icon-128x128-transparent.png')}}">
+            </div>
+          </a></li>
+      </ul>
+    </nav>
+  </div>
+
+
+  <div class="container-setores">
+    <h1 class="title-planta"></h1>
+    <div class="pinos" id="pinos">
+      <img id="img-planta" src="{{url_for('static', filename='imagens/'+mapa['url'])}}">
+      {% for setor in setores %}
+
+      <div class="item" data-id="{{ setor['id'] }}" draggable="true"
+        style="left: {{ setor['x'] }}; top: {{ setor['y'] }};">
+        <a href="{{ url_for(links['setor'], setor_id=setor['id']) }}" draggable="false">
+          {{ setor['title'] }}
+        </a>
+      </div>
+
+      {% endfor %}
+    </div>
+    {% if current_user.is_authenticated %}
+    <div class="legenda">
+      <button class="btn-add-pin" value="{{ url_for('edit_mapa', id=mapa['id']) }}"
+        onclick="location.href=this.value">Editar mapa</button>
+      <!-- Trigger/Open The Modal -->
+      <button class="btn-add-pin" id="myBtn">Adicionar pino</button>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <iframe src="{{url_for('create_setor_id', id=mapa['id'])}}" frameborder="0" width="100%"
+            height="500px"></iframe>
+        </div>
+
+      </div>
+
+      <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+          modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+          // modal.style.display = "none";
+          location.reload()
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+          if (event.target == modal) {
+            // modal.style.display = "none";
+            location.reload()
+          }
+        }
+      </script>
+
+    </div>
+  </div>
+
+  <script src="{{url_for('static', filename='js/setor-preview-admin.js')}}"></script>
+  {% endif %}
+  <script src="{{url_for('static', filename='js/hour-date.js')}}"></script>
+  <script>
+    const nav = document.querySelector("nav")
+
+    const ocultarNav = () => {
+      nav.className = 'hidden'
+    }
+
+    const exibirNav = () => {
+      nav.className = 'visible'
+    }
+
+    document.querySelector('body').addEventListener('dblclick', exibirNav)
+    window.addEventListener('contextmenu', (evt) => {
+      evt.preventDefault()
+
+      if (nav.className == 'hidden')
+        exibirNav()
+      else
+        ocultarNav()
+    }, false)
+    nav.addEventListener('mouseover', exibirNav)
+    nav.addEventListener('mouseout', ocultarNav)
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{cronograma['turma']}} {% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/cronograma-full.css')}}">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="editar">
+            <a href="{{url_for('index_cronogramas')}}">
+                <img class="img-fechar" src="{{url_for('static', filename='imagens/icone-totem-fechar-v2.png')}}">
+            </a>
+        </div>
+
+        <h1 class="cronograma-title">{{ cronograma['turma'] }}</h1>
+
+        <div class="wrapper">
+            <div class="cabecalho">
+                <div>Horario</div>
+            </div>
+            {% for dia in dias.values() %}
+            <div class="cabecalho">
+                <div>
+                    <h4 class="title">{{ dia }}</h4>
+                </div>
+            </div>
+            {% endfor %}
+            {% for horario in horarios %}
+            <div class="box">
+                <div>
+                    <p class="title">{{ horario }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% for dia in dias.keys() %}
+            {% for horario in horarios %}
+            <div class="box">
+                <div>
+                    <p class="materia">{{ cronograma[dia ~ '_disciplina_' ~ horario]}}</p>
+                    <p class="professor">{{ cronograma[dia ~ '_professor_' ~ horario] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+
+    </div>
+</body>
+
+</html>

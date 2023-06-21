@@ -1,0 +1,61 @@
+erDiagram
+  noticias {
+    INTEGER id PK
+    TIMESTAMP created
+    TEXT title
+    TEXT autor
+    TEXT content
+    TEXT url
+    TEXT fonte
+  }
+
+  mapas {
+    INTEGER id PK
+    TEXT title
+    TEXT url
+  }
+
+  setores {
+    INTEGER id PK
+    TEXT id_mapa FK
+    TEXT title
+    TEXT descricao
+    TEXT url
+    TEXT x
+    TEXT y
+  }
+
+  eventos {
+    INTEGER id PK
+    TEXT title
+    TEXT autor
+
+    TEXT data
+    TEXT descricao
+    TEXT local
+  }
+
+  usuarios {
+    INTEGER id PK
+    TEXT email
+    TEXT nome
+    TEXT senha
+    BOOLEAN authenticated
+  }
+
+  cronogramas {
+    INTEGER id PK
+    TEXT section
+    TEXT turma
+  }
+
+  horarios {
+    INTEGER id_cronograma PK, FK
+    INTEGER horario PK
+    TEXT dia PK
+    TEXT disciplina
+    TEXT professor
+  }
+
+  mapas ||--o{ setores : tem
+  cronogramas ||--|{ horarios : tem

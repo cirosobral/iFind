@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mapas Preview Admin</title>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/mapa-preview-admin.css')}}">
+</head>
+
+<body class="body-mapas">
+
+	<div class="bar">
+		<h1>{% block title %} Mapas {% endblock %}</h1>
+		<select onchange="location.href=this.value">
+			<option value="#">Selecione:</a></option>
+			<option value="{{url_for('create_noticia')}}">Criar Noticia</a></option>
+			<option value="{{url_for('create_evento')}}">Criar Evento</option>
+			<option value="{{url_for('create_mapa')}}">Criar Mapa</option>
+			<option value="{{url_for('create_cronograma')}}">Criar Cronograma</option>
+			<option value="{{url_for('register')}}">Criar administrador</option>
+			<option value="{{url_for('upload_file')}}">Importar Imagem</option>
+			<option value="{{url_for('index_arquivos')}}">Ver Importações</option>
+		</select>
+
+		<div class="bar-hour-date">
+			<h3 id="bar-hour"></h3>
+			<h3 id="bar-date"></h3>
+		</div>
+		<div class="toggle-switch">
+			<a href="{{url_for('logout')}}">
+				<div class="btn-aluno"></div>
+			</a>
+			<a href="{{url_for('login')}}">
+				<div class="btn-admin"></div>
+			</a>
+		</div>
+	</div>
+
+	<div class="container">
+		<nav>
+			<ul class="nav-ul">
+				<li class="nav-li"><a href="{{url_for('index_noticias_admin')}}" alt="Noticias">
+						<div id="nav-btn-1" class="nav-btn"><img
+								src="{{url_for('static', filename='imagens/noticias-icon-128x128-transparent.png')}}">
+						</div>
+					</a></li>
+				<li class="nav-li"><a href="{{url_for('index_cronogramas_admin')}}" alt="Cronogramas">
+						<div id="nav-btn-2" class="nav-btn"><img
+								src="{{url_for('static', filename='imagens/cronograma-icon-128x128-transparent.png')}}">
+						</div>
+					</a></li>
+				<li class="nav-li"><a href="{{url_for('index_mapas_admin')}}" alt="Mapas">
+						<div id="nav-btn-3" class="nav-btn"><img
+								src="{{url_for('static', filename='imagens/mapa-icon-128x128-transparent.png')}}"></div>
+					</a></li>
+				<li class=" nav-li"><a href="{{url_for('index_eventos_admin')}}" alt="Eventos">
+						<div id="nav-btn-4" class="nav-btn"><img
+								src="{{url_for('static', filename='imagens/evento-icon-128x128-transparent.png')}}">
+						</div>
+					</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class="container-mapa">
+		{% for mapa in mapas %}
+		<a href="{{ url_for('mapa_admin', mapa_id=mapa['id']) }}">
+			<div class="mapas-preview">
+				<h2>{{ mapa['title'] }}</h2>
+				<img src="{{url_for('static', filename='imagens/'+mapa['url'])}}">
+			</div>
+		</a>
+		{% endfor %}
+	</div>
+
+	<script src="{{url_for('static', filename='js/hour-date.js')}}"></script>
+
+</body>
+
+</html>

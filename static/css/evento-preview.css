@@ -1,0 +1,310 @@
+.body-eventos {
+	margin: 0;
+	background-color: #333;
+  }
+  
+  .container-evento {
+	width: 90%;
+	margin: auto;
+	columns: 4;
+	column-gap: 2.5em;
+  }
+  
+  .container-evento{
+	  background-image: url("/static/imagens/ifind-icon-1000x1000-40%transparent.png");
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  background-size: contain;
+  }
+  
+  .container-evento .eventos-preview {
+	width: 90%;
+	margin: 0em 0em 1.2em;
+	padding: 0.6em;
+	background: linear-gradient(145deg, #373737, #2e2e2e);
+	border-radius: 0.6em;
+	overflow: hidden;
+	break-inside: avoid; 
+	backface-visibility: hidden;
+	box-shadow:  6px 6px 17px #181818, -6px -6px 17px #4e4e4e;
+	color: white;
+  }
+  
+  .container-evento .eventos-preview img {
+	margin: auto;
+	width: 100%;  
+  }
+  
+  .container-evento .eventos-preview h2 {  
+	margin: auto;
+	padding: 0em;
+	font-size: 1em;
+	display: block;
+  }
+  
+  .container-evento .eventos-preview h3 {  
+	margin: 1em 0em;
+	padding: 0em;
+	font-size: 1em;
+	display: block;
+  }
+  
+  
+  .container-evento #data {
+	margin: 1em auto;
+	padding: 0em;
+	font-size: 1em;
+	display: block;
+	text-align: right;
+  }
+  
+  .container-evento .autor {
+	text-align: right;
+  }	
+
+  a {
+	  color: white;
+	  text-decoration: none;
+  }
+
+  a:hover {
+	  color: royalblue;
+	  cursor: pointer;
+  }
+  
+  /* =========================== NAV ============================= */
+  
+  * {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+  } 
+  
+  html { 
+	  margin: 0;
+	  max-width: 100vw;
+	  font-size: 100%;
+  }
+  
+  .container {
+	  width: 90vw;
+  }
+  
+  nav {
+	right: 0;
+	left: 0;
+	margin: 15em auto;
+	padding: 1em 2em;
+	width: 25em;
+	background-color: #1d1d1d;
+	border-radius: 1.2em;
+	position: fixed;
+	box-shadow:  6px 8px 10px black;
+}
+  
+  a {
+	  text-decoration: none;
+  }
+  
+  nav ul {
+	  display: inline-flex;
+	  padding: auto;
+	  width: 100%;
+  }
+  
+  nav ul li {
+	  margin: auto;
+	  list-style: none;
+	  width: 3.5em;
+  }
+  
+  nav ul li a {
+	  width: 7.4em;
+	  height: 7.em
+  }
+  
+  .nav-btn {
+	  width: 3em;
+	  height: 3em;
+	  border-radius: 100%;
+	  border: none;
+	  background-color: white;
+	  cursor: pointer;
+  }
+
+  #nav-btn-4 {
+	background-color: #ff2d09;
+  }
+  
+  .nav-btn img {
+	  padding: 0.5em;
+	  width: 3em;
+  }
+  
+  nav ul li div:hover {
+	  background-color: orange;
+  }
+  
+  
+  nav ul li div:Active {
+	  background-color: red;
+  
+  }
+  
+  .bar {
+	  width: 100%;
+	  display: inline-flex;	
+	  background-color: transparent;
+	  color: white;
+	  margin-bottom: 2em;
+	  border-color: transparent;
+	  border-width: 3px;
+	  border-bottom-style: solid;
+  }
+  
+  .bar h1 {
+	  margin: auto;
+	  margin-left: 1em;
+  }
+  
+  .bar-hour-date {
+	  margin: auto;
+	  margin-left: 1em;
+	  text-align: right;	
+  }
+  
+  
+  .toggle-switch {
+	  margin: 1em;
+	  width: 7em;
+	  height: 2.7em;
+	  padding: 0.6em;
+	  background-color: #444;
+	  opacity: 0.8;
+	  display: inline-flex;
+	  border-radius: 3em;
+  }
+  
+  
+  .toggle-switch div {
+	  width: 1.5em;
+	  height: 1.5em;
+	  margin-left: 1em;
+	  margin-right: auto;
+	  border-radius: 100%;
+	  border: none;
+	  cursor: pointer;
+  }  
+  
+  .btn-aluno {
+	  background-color: limegreen;
+  }
+  
+  .btn-admin {
+	  background-color: gray;
+  }
+  
+  
+  @media (max-width: 1280px) {
+	  
+	  html {
+		  font-size: 90%;
+	  }
+  
+  }
+  
+  
+  @media (max-width: 1200px) {
+  
+	.container-evento {
+		columns: 3;
+		width: calc(100% - 2.5em);
+		box-sizing: border-box;
+		padding: 1.2em 1.2em 1.2em 0em;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+  }
+  
+  
+  @media (max-width: 1024px) {
+	  
+	  html {
+		  font-size: 80%;
+	  }
+
+	  .toggle-switch div {
+		  width: 1.5em;
+	  }
+	  
+  }
+  
+  @media (max-width: 767px) {
+	  
+	  html {
+		  font-size: 70%;
+	  }
+	  
+	  .container-evento {
+		columns: 2;
+	  }
+	  
+  }
+  
+  @media (max-width: 600px) {
+	  
+	  .container-evento {
+		  columns: 2;
+	   }
+			
+  }
+  
+  
+  
+  @media (max-width: 480px) {
+	  
+	  .container-evento {
+		  columns: 1;
+	   }
+		
+  }
+  
+  
+  @media (max-width: 300px) {
+	  
+	  .container-evento {
+		  width: 90%;
+	  }
+	  
+	  .bar h1, select{
+		  display: inline-block;
+	  }
+	  
+	  .bar-hour-date {
+		  display: inline-block;
+	  }
+	  
+	  .toggle-switch {
+		  display: inline-flex;
+	  }
+	  
+	  .bar-hour-date {
+		  text-align: left;		
+	  }
+	  
+	  .bar {
+		  display: inline-block;
+		  text-align: center;
+	  }
+	  
+	  nav  {
+		  width: auto;
+	  }
+	  
+	  .container-evento .eventos-preview {
+		  width: 17.5em;
+	  }
+	  
+  }
+  

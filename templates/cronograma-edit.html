@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Editar cronograma "{{ cronograma['turma'] }}" {% endblock %}</h1>
+
+<form method="post">
+
+    <div class="form-group">
+        <label for="section">Section</label>
+        <select name="section" placeholder="Section" class="form-control"
+            value="{{ request.form['section'] or cronograma['section'] }}">
+            <option value="Informática">Informática</option>
+            <option value="Mineração">Mineração</option>
+            <option value="Eletromecanica">Eletromecanica</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="turma">Turma</label>
+        <input type="text" name="turma" placeholder="Turma" class="form-control"
+            value="{{ request.form['turma'] or cronograma['turma'] }}">
+    </div>
+
+    <div class="table-responsive">
+        <table>
+            <tr>
+                <td>Horário</td>
+                {% for dia in dias.values() %}
+                <td>{{ dia }}</td>
+                {% endfor %}
+            </tr>
+            {% for horario in horarios %}
+            <tr>
+                <td>{{ horario }}º Horário</td>
+                {% for dia in dias.keys() %}
+                <td>
+                    <div class="form-group">
+                        <input type="text" name="{{ dia }}_professor_{{ horario }}"
+                            placeholder="Professor {{ horario }}" class="form-control"
+                            value="{{ request.form[dia ~ '_professor_' ~ horario]or cronograma[dia ~ '_professor_' ~ horario] }}">
+                        <input type="text" name="{{ dia }}_disciplina_{{ horario }}"
+                            placeholder="Disciplina {{ horario }}" class="form-control"
+                            value="{{ request.form[dia ~ '_disciplina_' ~ horario]or cronograma[dia ~ '_disciplina_' ~ horario] }}">
+                    </div>
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+
+</form>
+<hr>
+<form action="{{ url_for('delete_cronograma', id=cronograma['id']) }}" method="POST">
+    <input type="submit" value="Delete Cronograma" class="btn btn-danger btn-sm"
+        onclick="return confirm('Você tem certeza que quer deletar este cronograma?')">
+</form>
+
+<script>
+    document.querySelector('form').addEventListener('submit', (evt) => {
+        evt.preventDefault();
+
+        const data = new FormData(evt.target);
+
+        fetch(evt.target.action, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Object.fromEntries([...data].filter(el => el[1] != "")))
+        }).then(response => {
+            if (response.ok) {
+                console.log('Dados enviados com sucesso')
+                return response.url;
+            }
+            throw new Error('Erro ao enviar dados')
+        }).then(data => {
+            window.location.assign(data)
+        })
+    })
+</script>
+{% endblock %}

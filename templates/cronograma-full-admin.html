@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{cronograma['turma']}} {% endblock %}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/cronograma-full-admin.css')}}">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="editar">
+            <a href="{{ url_for('edit_cronograma', id=cronograma['id']) }}">
+                <img class="img-editar" src="{{url_for('static', filename='imagens/icone-totem-editar-v2.png')}}">
+            </a>
+            <a href="{{url_for('index_cronogramas_admin')}}">
+                <img class="img-fechar" src="{{url_for('static', filename='imagens/icone-totem-fechar-v2.png')}}">
+            </a>
+        </div>
+
+        <h1 class="cronograma-title">{{ cronograma['turma'] }}</h1>
+        <div class="cronogramas">
+            <div class="cronograma-horario">
+                <h4 class="title">Horarios</h4>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_1'] }}</p>
+                </div>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_2'] }}</p>
+                </div>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_3'] }}</p>
+                </div>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_4'] }}</p>
+                </div>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_5'] }}</p>
+                </div>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_6'] }}</p>
+                </div>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_7'] }}</p>
+                </div>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_8'] }}</p>
+                </div>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_9'] }}</p>
+                </div>
+                <div id="horario" class="info">
+                    <p class="horario">{{ cronograma['seg_horario_10'] }}</p>
+                </div>
+            </div>
+
+
+            <div class="cronograma">
+                <h4 class="title">Segunda</h4>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_1']}}</p>
+                    <p class="professor">{{ cronograma['seg_professor_1'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_2'] }}</p>
+                    <p class="professor">{{ cronograma['seg_professor_2'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_3'] }}</p>
+                    <p class="professor">{{ cronograma['seg_professor_3'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_4'] }}</p>
+                    <p class="professor">{{ cronograma['seg_professor_4'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_5'] }}</p>
+                    <p class="professor">{{ cronograma['seg_professor_5'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_6'] }}</p>
+                    <p class="professor">{{ cronograma['seg_professor_6'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_7'] }}</p>
+                    <p class="professor">{{ cronograma['seg_professor_7'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_8'] }}</p>
+                    <p class="professor">{{ cronograma['seg_professor_8'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_9'] }}</p>
+                    <p class="professor">{{ cronograma['seg_professor_9'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['seg_disciplina_10'] }}</p>
+                    <p class="professor">{{ cronograma['seg_professor_10'] }}</p>
+                </div>
+            </div>
+
+            <div class="cronograma">
+                <h4 class="title">Terça</h4>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_1']}}</p>
+                    <p class="professor">{{ cronograma['ter_professor_1'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_2'] }}</p>
+                    <p class="professor">{{ cronograma['ter_professor_2'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_3'] }}</p>
+                    <p class="professor">{{ cronograma['ter_professor_3'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_4'] }}</p>
+                    <p class="professor">{{ cronograma['ter_professor_4'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_5'] }}</p>
+                    <p class="professor">{{ cronograma['ter_professor_5'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_6'] }}</p>
+                    <p class="professor">{{ cronograma['ter_professor_6'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_7'] }}</p>
+                    <p class="professor">{{ cronograma['ter_professor_7'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_8'] }}</p>
+                    <p class="professor">{{ cronograma['ter_professor_8'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_9'] }}</p>
+                    <p class="professor">{{ cronograma['ter_professor_9'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['ter_disciplina_10'] }}</p>
+                    <p class="professor">{{ cronograma['ter_professor_10'] }}</p>
+                </div>
+            </div>
+
+
+            <div class="cronograma">
+                <h4 class="title">Quarta</h4>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_1']}}</p>
+                    <p class="professor">{{ cronograma['qua_professor_1'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_2'] }}</p>
+                    <p class="professor">{{ cronograma['qua_professor_2'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_3'] }}</p>
+                    <p class="professor">{{ cronograma['qua_professor_3'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_4'] }}</p>
+                    <p class="professor">{{ cronograma['qua_professor_4'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_5'] }}</p>
+                    <p class="professor">{{ cronograma['qua_professor_5'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_6'] }}</p>
+                    <p class="professor">{{ cronograma['qua_professor_6'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_7'] }}</p>
+                    <p class="professor">{{ cronograma['qua_professor_7'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_8'] }}</p>
+                    <p class="professor">{{ cronograma['qua_professor_8'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_9'] }}</p>
+                    <p class="professor">{{ cronograma['qua_professor_9'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qua_disciplina_10'] }}</p>
+                    <p class="professor">{{ cronograma['qua_professor_10'] }}</p>
+                </div>
+            </div>
+
+            <div class="cronograma">
+                <h4 class="title">Quinta</h4>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_1']}}</p>
+                    <p class="professor">{{ cronograma['qui_professor_1'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_2'] }}</p>
+                    <p class="professor">{{ cronograma['qui_professor_2'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_3'] }}</p>
+                    <p class="professor">{{ cronograma['qui_professor_3'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_4'] }}</p>
+                    <p class="professor">{{ cronograma['qui_professor_4'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_5'] }}</p>
+                    <p class="professor">{{ cronograma['qui_professor_5'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_6'] }}</p>
+                    <p class="professor">{{ cronograma['qui_professor_6'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_7'] }}</p>
+                    <p class="professor">{{ cronograma['qui_professor_7'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_8'] }}</p>
+                    <p class="professor">{{ cronograma['qui_professor_8'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_9'] }}</p>
+                    <p class="professor">{{ cronograma['qui_professor_9'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['qui_disciplina_10'] }}</p>
+                    <p class="professor">{{ cronograma['qui_professor_10'] }}</p>
+                </div>
+            </div>
+
+            <div class="cronograma">
+                <h4 class="title">Sexta</h4>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_1']}}</p>
+                    <p class="professor">{{ cronograma['sex_professor_1'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_2'] }}</p>
+                    <p class="professor">{{ cronograma['sex_professor_2'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_3'] }}</p>
+                    <p class="professor">{{ cronograma['sex_professor_3'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_4'] }}</p>
+                    <p class="professor">{{ cronograma['sex_professor_4'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_5'] }}</p>
+                    <p class="professor">{{ cronograma['sex_professor_5'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_6'] }}</p>
+                    <p class="professor">{{ cronograma['sex_professor_6'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_7'] }}</p>
+                    <p class="professor">{{ cronograma['sex_professor_7'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_8'] }}</p>
+                    <p class="professor">{{ cronograma['sex_professor_8'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_9'] }}</p>
+                    <p class="professor">{{ cronograma['sex_professor_9'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sex_disciplina_10'] }}</p>
+                    <p class="professor">{{ cronograma['sex_professor_10'] }}</p>
+                </div>
+            </div>
+
+            <div class="cronograma">
+                <h4 class="title">Sabádo</h4>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_1']}}</p>
+                    <p class="professor">{{ cronograma['sab_professor_1'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_2'] }}</p>
+                    <p class="professor">{{ cronograma['sab_professor_2'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_3'] }}</p>
+                    <p class="professor">{{ cronograma['sab_professor_3'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_4'] }}</p>
+                    <p class="professor">{{ cronograma['sab_professor_4'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_5'] }}</p>
+                    <p class="professor">{{ cronograma['sab_professor_5'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_6'] }}</p>
+                    <p class="professor">{{ cronograma['sab_professor_6'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_7'] }}</p>
+                    <p class="professor">{{ cronograma['sab_professor_7'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_8'] }}</p>
+                    <p class="professor">{{ cronograma['sab_professor_8'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_9'] }}</p>
+                    <p class="professor">{{ cronograma['sab_professor_9'] }}</p>
+                </div>
+                <div class="info">
+                    <p class="materia">{{ cronograma['sab_disciplina_10'] }}</p>
+                    <p class="professor">{{ cronograma['sab_professor_10'] }}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

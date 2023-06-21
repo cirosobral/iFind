@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Editar setor "{{ setor['title'] }}" {% endblock %}</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label for="title">Titulo</label>
+        <input type="text" name="title" placeholder="Titulo" class="form-control"
+            value="{{ request.form['title'] or setor['title'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="id_mapa">ID Mapa</label>
+        <input type="text" name="id_mapa" placeholder="ID do mapa" class="form-control"
+            value="{{ request.form['id_mapa'] or setor['id_mapa'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <input type="text" name="descricao" placeholder="Descrição" class="form-control"
+            value="{{ request.form['descricao'] or setor['descricao'] }}">
+    </div>
+
+    <div class="form-group">
+        <label for="url">URL</label>
+        <input type="text" name="url" placeholder="URL da imagem" class="form-control"
+            value="{{ request.form['url'] or setor['url'] }}">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+</form>
+<hr>
+<form action="{{ url_for('delete_setor', id=setor['id']) }}" method="POST">
+    <input type="submit" value="Deletar um Setor" class="btn btn-danger btn-sm"
+        onclick="return confirm('Você quer mesmo deletar esse setor?')">
+</form>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title%} {{setor['title']}} {% endblock %}</title>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/setor-full-admin.css')}}">
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="editar">
+			<a href="{{ url_for('edit_setor', id=setor['id']) }}">
+				<img class="img-editar" src="{{url_for('static', filename='imagens/icone-totem-editar-v2.png')}}">
+			</a>
+			<a href="#" onclick="window.history.back()">
+				<img class="img-fechar" src="{{url_for('static', filename='imagens/icone-totem-fechar-v2.png')}}">
+			</a>
+		</div>
+
+		<div class="setor-preview">
+			<h2 alt="Titulo">{{ setor['title'] }}</h2>
+			<p id="texto" class="text" alt="Descrição">
+				<img id="img" alt="Imagem" src="{{url_for('static', filename='imagens/'+setor['url'])}}">
+				<br>
+				{{ setor['descricao'] }}
+			</p>
+		</div>
+
+		<script src="{{url_for('static', filename='js/noticia-full.js')}}"></script>
+
+	</div>
+
+</body>
+
+</html>

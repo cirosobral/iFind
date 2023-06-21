@@ -1,0 +1,270 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: monospace;
+	color: white;
+	font-size: 100%;
+  }
+  
+  html {
+	width: 100vw;
+	min-height: 100vh;	
+  }
+  
+  .body-home {
+	margin: auto;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	background: #000;
+  }
+  
+  .container-home-column {
+	margin: 1em auto;
+	width: 50%;
+	min-height: 90vh;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: justify-content;
+	gap: 40px;
+	flex-direction: column;
+	background: black;
+	border-radius: 2em;
+	box-shadow: 6px 6px 12px #000, -6px -6px 12px gray;
+  }
+  
+  .body-home {
+	  background-image: url('/static/imagens/Parallax-Background-Dark-08.jpg');
+	  background-repeat: no-repeat;
+	  background-position: center;
+  }
+  
+  .container-home-column {
+	  background-image: url('/static/imagens/Parallax-Background-Dark-08.jpg');
+	  background-repeat: no-repeat;
+	  background-position: center;
+  }
+  
+  .container-home-row {
+	  display: flex;
+	  flex-direction: row;
+	  width: 100%;
+	  justify-content: center;
+	  align-items: center;
+	  text-align: center;
+  }
+  
+  .container-home-row-about {
+	  display: flex;
+	  flex-direction: row;
+	  width: 100%;
+	  justify-content: center;
+	  align-items: center;
+	  text-align: center;
+  }
+  
+  .container-home-row a {
+	  margin: 1em auto;
+	  padding: 1em;
+	  border: none;
+	  width: 100%;
+	  border: none;
+	  /*background-color: #1d1d1d;*/
+	  border-bottom: 2px gray solid;
+  }
+  
+  .container-home-row-about a {
+	  margin: 1em auto;
+	  padding: 1em;
+	  border: none;
+	  width: 100%;
+	  border: none;
+	  /*background-color: #1d1d1d;*/
+	  border-bottom: 2px gray solid;
+  }
+  
+  .container-home-row a:nth-child(1) {
+	  border-bottom: 2px limegreen solid;
+  }
+  
+  .container-home-row-about a:nth-child(1) {
+	  border-bottom: 2px limegreen solid;
+  }
+  
+  
+  #btn-projeto {
+	  color: limegreen;
+  }
+  
+  .container-home-row a .btn-row {
+	  width: 100%;
+	  border: none;
+	  background-color: transparent;
+	  cursor: pointer;
+	  color: #fff;
+  }
+  
+  a .btn-row {
+	  width: 100%;
+	  border: none;
+	  background-color: transparent;
+	  cursor: pointer;
+	  color: #fff;
+  }
+  
+  .container-home-column .title {
+	  margin: 1em auto;
+	  font-size: 2em;
+	  color: limegreen;
+  }
+  
+  .container-home-row .img {
+	  margin: 1em;
+	  /*width: 40%;*/
+	  width: 13em ;
+	  height: 16em;
+	  border-radius: 10%;
+  }
+  
+  .container-home-row .description {
+	  margin: auto 1em;
+	  text-align: justify;
+	  width: 50%;
+  }
+  
+  .container-home-column .auth {
+	  margin: 1em;
+  }
+  
+  a {
+	  text-decoration: none;
+  }
+  
+  .auth span:hover {
+	  color: limegreen;
+  }
+  
+  .container-home span {
+	  margin: 0.5em;
+	  display: inline-flex;
+	  letter-spacing: 0.2em;
+  }
+  
+  .container-home-column .btn-start {
+	  margin: 1em auto;
+	  padding: 1em 2em;
+	  background: limegreen;
+	  border-radius: 1em;
+	  border: none;
+	  outline: none;
+  }
+  
+  .container-home-column .btn-start:hover {
+	  background: transparent;
+	  border: 1px white solid;
+	  cursor: pointer;
+  }
+  
+  .container-home-column .social-media .social-media-ul {
+	  margin: 1em auto;
+	  display: flex;
+	  flex-direction: row;
+  }
+	  
+  .container-home-column .social-media .social-media-ul a img {
+	  margin: auto 0.5em;
+	  width: 3em;
+	  height: 3em;
+	  border-radius: 100%;
+	  border: none;
+	  background-color: transparent;
+	  cursor: pointer;
+  }
+	  
+  /*
+  .container-home-column .social-media .social-media-ul a li img{
+	  width: 2em;
+	  height: 2em;
+  }
+  
+  .container-home-column .social-media .social-media-ul a li img:hover {
+	  width: 10%;
+	  height: 3em;
+  }
+  */
+  
+  
+  @media (max-width: 1280px) {
+	  
+	  html {
+		  font-size: 90%;
+	  }
+  
+  }
+  
+  
+  @media (max-width: 1200px) {
+  
+	
+  }
+  
+  
+  @media (max-width: 1024px) {
+	  
+	  html {
+		  font-size: 80%;
+	  }
+	  
+  }
+  
+  @media (max-width: 767px) {
+	  
+	  html {
+		  font-size: 70%;
+	  }
+	  
+  }
+  
+  @media (max-width: 600px) {
+	  
+	  .container-home-row {
+		display: flex;
+		flex-direction: column;
+	  }
+  }
+  
+  
+  
+  @media (max-width: 480px) {
+	  
+	  
+	  .container-home-row .img{
+		  width: 10em;
+	  }
+		  
+	  .container-home-column .social-media .social-media-ul {
+		  flex-direction: column;
+	  }
+		  
+  
+  }
+  
+  
+  @media (max-width: 300px) {
+	  
+	  /*
+	  .social-media .social-media-ul {
+		  flex-direction: column;
+	  }
+  
+	  .social-media .social-media-ul a li {
+		  margin: 1em auto;
+	  }
+	  */
+  
+  }
+  
